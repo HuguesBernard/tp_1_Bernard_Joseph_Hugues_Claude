@@ -1,32 +1,19 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+</head>
+<body>
 
-function validation($passeword)
-{
-    if (strlen($passeword) < 6 || strlen($passeword) > 10) {
-        return "Votre mot de passe de passe doit avoir au moins 6 caracteres et au plus 10 caracteres";
-    }
+<!-- Formulaire HTML -->
+<form method="post" action="fonction.php">
+    Nom: <input type="text" name="nom"><br>
+    Mot de passe: <input type="password" name="motDePasse"><br>
+    <input type="submit" value="Valider">
+</form>
 
-    $dusel = "XYZ112%";
-
-    $passewordAvecdusel = $passeword . $dusel;
-
-    $passewordChiffre = hash('hugues123', $passewordAvecdusel);
-
-    echo "Sel: $dusel<br>";
-    echo "Mot de passe chiffré: $passewordChiffre<br>";
-
-    $passewordTest = "MotDePasseTest";
-
-    if (hash('hugues123', $passewordTest . $dusel) === $passewordChiffre) {
-        return "Mot de passe correct, Merci!";
-    } else {
-        return "Mot de passe incorrect, svp, inserez le mot de passe valide.";
-    }
-}
-
-// Test de la fonction avec un exemple de mot de passe
-$motDePasseAValider = "MonMotDePasse";
-$resultatValidation = validation($motDePasseAValider);
-echo $resultatValidation;
-
-?>
+</body>
+</html>
